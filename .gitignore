@@ -1,4 +1,7 @@
+# Class files
 *.class
+
+# Objects and archives
 *.[oa]
 
 # Eclipse
@@ -6,7 +9,7 @@
 .project
 .settings/
 
-# Intellij
+# IntelliJ
 .idea/
 *.iml
 *.iws
@@ -17,3 +20,4 @@
 # Maven
 log/
 target/
+lib/
