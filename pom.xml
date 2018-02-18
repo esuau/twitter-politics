@@ -3,9 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.twitter-politics</groupId>
     <artifactId>twitter-politics-server</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>scraper</module>
+        <module>common</module>
+        <module>service</module>
+    </modules>
 
-    <!-- Define the parent pom -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -15,6 +20,8 @@
     <!-- Set the Java version -->
     <properties>
         <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -36,16 +43,11 @@
             <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
 
-        <!-- MySQL Connector-J -->
+        <!-- SQL Server Connector -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
-        <!-- Spring Security -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>6.2.2.jre8</version>
         </dependency>
 
         <!-- Lombok -->
@@ -63,13 +65,4 @@
         </dependency>
     </dependencies>
 
-    <!-- Spring Boot Maven Plugin -->
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 </project>
