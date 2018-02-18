@@ -1,4 +1,4 @@
-![circleci](https://circleci.com/gh/esuau/twitter-politics-server.svg?style=shield)
+![travisci](https://travis-ci.org/esuau/twitter-politics-server.svg?branch=dev)
 
 # Twitter Politics
 
