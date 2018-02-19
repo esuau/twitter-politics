@@ -14,9 +14,6 @@ import java.util.Date;
 @RequestMapping(path = "/status")
 public class StatusController {
 
-    @Autowired
-    private StatusRepository repository;
-
     @GetMapping
     public @ResponseBody Status hello() {
         Status status = new Status();

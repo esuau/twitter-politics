@@ -9,7 +9,9 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @ComponentScan(basePackages = {
         "io.twitterpolitics.entity",
-        "io.twitterpolitics.repository"})
+        "io.twitterpolitics.repository",
+        "io.twitterpolitics.service.controller"
+})
 public class Application {
 
     public static void main(String[] args) {
