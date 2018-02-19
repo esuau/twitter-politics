@@ -1,2 +1,2 @@
 [config]
-project = service/target/service.jar
+project = service/target/service.war
