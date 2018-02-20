@@ -5,7 +5,5 @@ jdk:
 script:
   - mvn install
 
-deploy:
-  provider: azure_web_apps
-  skip_cleanup: true
-  verbose: true
+after_success:
+  "curl -T service/target/service.war -u $FTP_USER:$FTP_PASSWORD ftp://waws-prod-dm1-055.ftp.azurewebsites.windows.net/site/wwwroot/webapps"
