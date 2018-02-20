@@ -17,4 +17,6 @@ public class Status {
 
     private String text;
 
+    private String author;
+
 }
