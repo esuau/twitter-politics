@@ -6,4 +6,4 @@ script:
   - mvn install
 
 after_success:
-  "curl -T service/target/service.war -u $FTP_USER:$FTP_PASSWORD ftp://waws-prod-dm1-055.ftp.azurewebsites.windows.net/site/wwwroot/webapps/"
+  - curl -T service/target/service.war -u $FTP_USER:$FTP_PASSWORD ftp://waws-prod-dm1-055.ftp.azurewebsites.windows.net/site/wwwroot/webapps/
