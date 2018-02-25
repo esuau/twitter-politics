@@ -11,6 +11,7 @@ import java.util.List;
 public class User {
 
     @Id
+    @Column(name = "user_id")
     private long id;
 
     @Column(name = "user_name")
@@ -24,8 +25,5 @@ public class User {
 
     @Column(name = "profile_image_url")
     private String profileImageUrl;
-
-    @OneToMany(mappedBy = "user")
-    private List<Status> statuses;
 
 }
