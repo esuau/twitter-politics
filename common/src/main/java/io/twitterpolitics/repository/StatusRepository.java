@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RestResource(exported = false)
-public interface StatusRepository extends JpaRepository<Status, String> {
+public interface StatusRepository extends JpaRepository<Status, Long> {
 
 }
