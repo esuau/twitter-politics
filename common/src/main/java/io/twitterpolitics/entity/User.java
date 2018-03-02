@@ -22,9 +22,6 @@ public class User {
     @Column(name = "screen_name")
     private String screenName;
 
-    @Column(name = "user_url")
-    private String url;
-
     @Column(name = "profile_image_url")
     private String profileImageUrl;
 

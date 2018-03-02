@@ -2,7 +2,6 @@ package io.twitterpolitics.scraper.service;
 
 import io.twitterpolitics.repository.StatusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import twitter4j.*;
@@ -55,7 +54,6 @@ public class ScraperServiceImpl implements ScraperService {
                 scraperUser.setName(status.getUser().getName());
                 scraperUser.setScreenName(status.getUser().getScreenName());
                 scraperUser.setProfileImageUrl(status.getUser().getProfileImageURL());
-                scraperUser.setUrl(status.getUser().getURL());
                 scraperStatus.setUser(scraperUser);
                 statusRepository.save(scraperStatus);
             }
