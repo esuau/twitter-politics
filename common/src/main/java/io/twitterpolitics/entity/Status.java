@@ -20,8 +20,8 @@ public class Status {
     @Column(name = "status_text")
     private String text;
 
-    @ManyToOne
-    @JoinColumn(name="user_id")
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "user_id")
     private User user;
 
 }

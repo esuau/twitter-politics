@@ -16,11 +16,12 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
+@EnableAsync
 @EnableAutoConfiguration
+@EnableTransactionManagement
 @EnableJpaRepositories("io.twitterpolitics.repository")
 @ComponentScan("io.twitterpolitics.scraper.service")
 @EntityScan("io.twitterpolitics.entity")
-@EnableTransactionManagement
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer implements CommandLineRunner {
 
