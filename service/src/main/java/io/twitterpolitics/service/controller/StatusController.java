@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * The controller managing the RESTful tweet API.
+ */
 @CrossOrigin
 @RestController
 @RequestMapping(path = "/status")

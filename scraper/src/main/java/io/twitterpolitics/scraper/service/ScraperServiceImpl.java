@@ -7,19 +7,25 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import twitter4j.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class ScraperServiceImpl implements ScraperService {
 
     @Autowired
     private StatusRepository statusRepository;
 
+    /**
+     * The instance of Twitter API.
+     */
     private Twitter twitter = new TwitterFactory().getInstance();
 
+    /**
+     * The instance of Twitter Stream.
+     */
     private TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
 
+    /**
+     * The list of current trends in France.
+     */
     private Trends trends;
 
     @Override
@@ -29,7 +35,7 @@ public class ScraperServiceImpl implements ScraperService {
     }
 
     @Override
-    public void saveStatuses() throws TwitterException {
+    public void saveStatuses() {
         FilterQuery tweetFilterQuery = new FilterQuery();
         tweetFilterQuery.track(getTrendQueries());
         tweetFilterQuery.language("fr");
@@ -78,14 +84,17 @@ public class ScraperServiceImpl implements ScraperService {
         twitterStream.filter(tweetFilterQuery);
     }
 
-    private String[] getTrendQueries() throws TwitterException {
-        getTrends();
-        List<String> queryList = new ArrayList<>();
-        for (Trend trend : trends.getTrends()) {
-            queryList.add(trend.getQuery());
+    /**
+     * Gets the queries corresponding to current trends for tweet filter.
+     *
+     * @return an array of the current trends' queries.
+     */
+    private String[] getTrendQueries() {
+        String[] queries = new String[trends.getTrends().length];
+        for (int i = 0; i < trends.getTrends().length; i++) {
+            queries[i] = trends.getTrends()[i].getQuery();
         }
-        String[] queries = new String[queryList.size()];
-        return queryList.toArray(queries);
+        return queries;
     }
 
 }
