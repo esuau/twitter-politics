@@ -18,10 +18,26 @@ public class StatusController {
     @Autowired
     private StatusService statusService;
 
-    @GetMapping
+    /**
+     * Serves all the stored tweets.
+     *
+     * @return the list of stored tweets.
+     */
+    @GetMapping("/all")
     @ResponseBody
-    public List<Status> hello() {
+    public List<Status> all() {
         return statusService.findAll();
+    }
+
+    /**
+     * Serves the tweets of the day posted during breakfast time.
+     *
+     * @return the list of the tweets posted between 7AM and 9AM.
+     */
+    @GetMapping("/morning")
+    @ResponseBody
+    public List<Status> morning() {
+        return statusService.getMorningTweets();
     }
 
 }
