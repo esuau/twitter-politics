@@ -43,17 +43,19 @@ public class ScraperServiceImpl implements ScraperService {
             @Override
             @Transactional
             public void onStatus(Status status) {
-                io.twitterpolitics.entity.Status scraperStatus = new io.twitterpolitics.entity.Status();
-                scraperStatus.setId(status.getId());
-                scraperStatus.setCreatedAt(status.getCreatedAt());
-                scraperStatus.setText(status.getText());
-                io.twitterpolitics.entity.User scraperUser = new io.twitterpolitics.entity.User();
-                scraperUser.setId(status.getUser().getId());
-                scraperUser.setName(status.getUser().getName());
-                scraperUser.setScreenName(status.getUser().getScreenName());
-                scraperUser.setProfileImageUrl(status.getUser().getProfileImageURL());
-                scraperStatus.setUser(scraperUser);
-                statusRepository.save(scraperStatus);
+                if (!status.isRetweet()) {
+                    io.twitterpolitics.entity.Status scraperStatus = new io.twitterpolitics.entity.Status();
+                    scraperStatus.setId(status.getId());
+                    scraperStatus.setCreatedAt(status.getCreatedAt());
+                    scraperStatus.setText(status.getText());
+                    io.twitterpolitics.entity.User scraperUser = new io.twitterpolitics.entity.User();
+                    scraperUser.setId(status.getUser().getId());
+                    scraperUser.setName(status.getUser().getName());
+                    scraperUser.setScreenName(status.getUser().getScreenName());
+                    scraperUser.setProfileImageUrl(status.getUser().getProfileImageURL());
+                    scraperStatus.setUser(scraperUser);
+                    statusRepository.save(scraperStatus);
+                }
             }
 
             @Override
