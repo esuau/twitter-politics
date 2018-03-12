@@ -35,7 +35,7 @@ public class ScraperServiceImpl implements ScraperService {
     }
 
     @Override
-    public void saveStatuses() {
+    public void saveStatuses() throws TwitterException {
         FilterQuery tweetFilterQuery = new FilterQuery();
         tweetFilterQuery.track(getTrendQueries());
         tweetFilterQuery.language("fr");
@@ -89,7 +89,8 @@ public class ScraperServiceImpl implements ScraperService {
      *
      * @return an array of the current trends' queries.
      */
-    private String[] getTrendQueries() {
+    private String[] getTrendQueries() throws TwitterException {
+        if (trends == null) getTrends();
         String[] queries = new String[trends.getTrends().length];
         for (int i = 0; i < trends.getTrends().length; i++) {
             queries[i] = trends.getTrends()[i].getQuery();

@@ -9,7 +9,7 @@ public interface ScraperService {
 
     /**
      * Gets the current Twitter trends in France.
-     * Trends are refreshed e
+     * Trends are refreshed every sixty minutes.
      *
      * @throws TwitterException in case of issue with the Twitter API.
      */
@@ -18,6 +18,6 @@ public interface ScraperService {
     /**
      * Saves tweets posted on current trends.
      */
-    void saveStatuses();
+    void saveStatuses() throws TwitterException;
 
 }
