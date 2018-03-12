@@ -16,4 +16,11 @@ public interface StatusService {
      */
     List<Status> findAll();
 
+    /**
+     * Gets the tweets of the day posted between 7AM and 9AM CET.
+     *
+     * @return the tweets
+     */
+    List<Status> getMorningTweets();
+
 }
