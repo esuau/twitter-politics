@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 @Service
 @Transactional
@@ -37,7 +38,7 @@ public class StatusServiceImpl implements StatusService {
      */
     private Date getMorningTime(Date today, String endOrStart) {
         int hour = "start".equals(endOrStart) ? 7 : 9;
-        Calendar calendarStart = Calendar.getInstance();
+        Calendar calendarStart = Calendar.getInstance(TimeZone.getTimeZone("CET"));
         calendarStart.setTime(today);
         calendarStart.set(Calendar.HOUR_OF_DAY, hour);
         calendarStart.set(Calendar.MINUTE, 0);
