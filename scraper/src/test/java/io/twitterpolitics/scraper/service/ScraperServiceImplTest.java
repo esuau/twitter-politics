@@ -12,12 +12,6 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class ScraperServiceImplTest {
 
-    @Mock
-    private Twitter twitter;
-
-    @InjectMocks
-    private ScraperService scraperService;
-
     @Test
     public void saveStatuses() {
     }
