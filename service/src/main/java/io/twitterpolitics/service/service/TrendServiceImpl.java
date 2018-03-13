@@ -18,7 +18,7 @@ public class TrendServiceImpl implements TrendService {
 
     @Override
     public List<Trend> getLastTrends() {
-        return trendRepository.findAll(new Sort(Sort.Direction.DESC)).subList(0, 9);
+        return trendRepository.findAll(new Sort(Sort.Direction.DESC, "id")).subList(0, 9);
     }
 
 }
