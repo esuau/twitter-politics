@@ -24,4 +24,13 @@ public interface StatusRepository extends JpaRepository<Status, Long> {
     @Query("SELECT s FROM Status s WHERE s.createdAt BETWEEN :breakfastStart AND :breakfastEnd")
     List<Status> getBreakfastTweets(@Param("breakfastStart") Date breakfastStart, @Param("breakfastEnd") Date breakfastEnd);
 
+    /**
+     * Gets the stored tweets by the topics they contain.
+     *
+     * @param topic the searched topic.
+     * @return the list of corresponding tweets.
+     */
+    @Query("SELECT s FROM Status s WHERE s.text LIKE :topic ORDER BY s.createdAt DESC")
+    List<Status> getStatusByTopic(@Param("topic") String topic);
+
 }

@@ -23,4 +23,12 @@ public interface StatusService {
      */
     List<Status> getMorningTweets();
 
+    /**
+     * Gets the tweets by topic related to their content.
+     *
+     * @param topic the searched topic.
+     * @return the corresponding tweets.
+     */
+    List<Status> getStatusByTopic(String topic);
+
 }

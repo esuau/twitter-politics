@@ -5,6 +5,7 @@ import io.twitterpolitics.service.service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 /**
@@ -38,6 +39,14 @@ public class StatusController {
     @ResponseBody
     public List<Status> morning() {
         return statusService.getMorningTweets();
+    }
+
+    /**
+     * Serves the tweets by topic
+     */
+    @GetMapping("/:topic")
+    public List<Status> topic(@PathParam(value = "topic") String topic) {
+        return statusService.getStatusByTopic(topic);
     }
 
 }

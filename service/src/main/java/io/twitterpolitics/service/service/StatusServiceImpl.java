@@ -30,6 +30,11 @@ public class StatusServiceImpl implements StatusService {
         return statusRepository.getBreakfastTweets(getMorningTime(date, "start"), getMorningTime(date, "end"));
     }
 
+    @Override
+    public List<Status> getStatusByTopic(String topic) {
+        return statusRepository.getStatusByTopic(topic);
+    }
+
     /**
      * Gets the breakfast start date.
      *
