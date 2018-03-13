@@ -1,6 +1,7 @@
 package io.twitterpolitics.scraper.service;
 
 import io.twitterpolitics.repository.StatusRepository;
+import io.twitterpolitics.repository.TrendRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,9 @@ public class ScraperServiceImpl implements ScraperService {
 
     @Autowired
     private StatusRepository statusRepository;
+
+    @Autowired
+    private TrendRepository trendRepository;
 
     /**
      * The instance of Twitter API.
@@ -29,9 +33,17 @@ public class ScraperServiceImpl implements ScraperService {
     private Trends trends;
 
     @Override
+    @Transactional
     @Scheduled(fixedRate = 60000)
     public void getTrends() throws TwitterException {
         trends = twitter.getPlaceTrends(23424819);
+        for (Trend trend : trends.getTrends()) {
+            if (!trendRepository.checkTrendExists(trend.getName())) {
+                io.twitterpolitics.entity.Trend scraperTrend = new io.twitterpolitics.entity.Trend();
+                scraperTrend.setName(trend.getName());
+                trendRepository.save(scraperTrend);
+            }
+        }
     }
 
     @Override
