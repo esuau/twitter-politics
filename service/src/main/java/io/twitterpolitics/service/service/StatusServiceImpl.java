@@ -2,6 +2,7 @@ package io.twitterpolitics.service.service;
 
 import io.twitterpolitics.entity.Status;
 import io.twitterpolitics.repository.StatusRepository;
+import io.twitterpolitics.repository.TrendRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,9 @@ public class StatusServiceImpl implements StatusService {
     @Autowired
     private StatusRepository statusRepository;
 
+    @Autowired
+    private TrendRepository trendRepository;
+
     @Override
     public List<Status> findAll() {
         return statusRepository.findAll(new Sort(Sort.Direction.DESC, "createdAt"));
@@ -31,8 +35,8 @@ public class StatusServiceImpl implements StatusService {
     }
 
     @Override
-    public List<Status> getStatusByTopic(String topic) {
-        return statusRepository.getStatusByTopic(topic);
+    public List<Status> getStatusByTopic(long topicId) {
+        return statusRepository.getStatusByTopic(trendRepository.getOne(topicId).getName());
     }
 
     /**

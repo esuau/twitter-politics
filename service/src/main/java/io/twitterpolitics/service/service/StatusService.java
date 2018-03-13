@@ -29,6 +29,6 @@ public interface StatusService {
      * @param topic the searched topic.
      * @return the corresponding tweets.
      */
-    List<Status> getStatusByTopic(String topic);
+    List<Status> getStatusByTopic(long topic);
 
 }

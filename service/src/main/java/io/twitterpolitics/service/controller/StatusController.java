@@ -2,6 +2,7 @@ package io.twitterpolitics.service.controller;
 
 import io.twitterpolitics.entity.Status;
 import io.twitterpolitics.service.service.StatusService;
+import io.twitterpolitics.service.service.TrendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,10 +45,10 @@ public class StatusController {
     /**
      * Serves the tweets by topic
      */
-    @GetMapping("/:topic")
+    @GetMapping("topics/:topicId")
     @ResponseBody
-    public List<Status> topic(@PathParam(value = "topic") String topic) {
-        return statusService.getStatusByTopic(topic);
+    public List<Status> topic(@PathParam(value = "topicId") long topicId) {
+        return statusService.getStatusByTopic(topicId);
     }
 
 }
