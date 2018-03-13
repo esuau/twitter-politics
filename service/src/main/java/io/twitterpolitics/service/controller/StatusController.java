@@ -45,6 +45,7 @@ public class StatusController {
      * Serves the tweets by topic
      */
     @GetMapping("/:topic")
+    @ResponseBody
     public List<Status> topic(@PathParam(value = "topic") String topic) {
         return statusService.getStatusByTopic(topic);
     }
